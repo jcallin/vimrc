@@ -14,25 +14,31 @@ set wildmenu "Autocomplete
 set showmatch "Matches parenthesis
 set autoindent "Indents code
 set showmode "Shows current mode at bottom of screen
-set textwidth=80 "Wrap text
+set textwidth=0 "Don't wrap text
+set wrap
 set incsearch
 set hlsearch "Highlight search results
 set backspace=indent,eol,start " more powerful backspacing
-set nu
-
+set directory^=$HOME/.vim/swapfiles// " Put all swapfiles in one location
+set undodir=~/.vim/undodir " Enable persistent undo on all edited files
+set undofile
 
 "Keyboard shortcuts
-""Split with Ctrl + <j,k,l,h>
+"Split with Ctrl + <j,k,l,h>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Allow jk combo to exit insert mode
+inoremap jk <esc>
+inoremap kj <esc>
+
 "Faster viewport scrolling
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
-""Enable folding with spacebar
+"Enable folding with spacebar
 set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
@@ -48,28 +54,32 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tmhedberg/SimpylFold'
 
 "Theme
-Plugin 'hdima/python-syntax'
+"Plugin 'hdima/python-syntax'
 Plugin 'sjl/badwolf'
 
 "PEP8 indentation for Python
-Plugin 'vim-scripts/indentpython.vim'
+"Plugin 'vim-scripts/indentpython.vim'
 
 "Syntax checking
 "Plugin 'scrooloose/syntastic'
 
 "Python errthang
-Plugin 'klen/python-mode'
+"Plugin 'klen/python-mode'
 
 "Auto completion
 "Bundle 'Valloric/YouCompleteMe'
-"
+
+"Status on bottom of screen
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 call vundle#end()
 filetype plugin indent on
-"
-"
-""Plugin Settings
+
+
+"Plugin Settings
 "let g:pymode_options_max_line_length =
-""Turn off rope in python-mode
+"Turn off rope in python-mode
 let g:pymode_rope = 0
 "Ignore undefined name errors raised by pyflakes
 let g:pymode_lint_ignore = "E0602"
@@ -96,4 +106,4 @@ let python_highlight_all=1 "Prettify Python code
 set encoding=utf-8 "Set encoding
 
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal g'\"" | endif " restore position in file upon reopen
-"
+au BufNewFile,BufReadPost *.log* :set filetype=messages " Log highlighting for .log files
