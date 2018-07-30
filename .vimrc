@@ -1,5 +1,6 @@
 "General
 set nocompatible "Disable original VI compatibility
+set nu
 set hidden "Manage buffers mo betta
 set wildmenu "Tab completion support
 set shortmess=atI "Shorter warnings
@@ -22,7 +23,10 @@ set backspace=indent,eol,start " more powerful backspacing
 set directory^=$HOME/.vim/swapfiles// " Put all swapfiles in one location
 set undodir=~/.vim/undodir " Enable persistent undo on all edited files
 set undofile
-
+set visualbell
+set noerrorbells
+" Add a line below the current line (can't add support for adding above)
+nmap <CR> o<Esc>k
 "Keyboard shortcuts
 "Split with Ctrl + <j,k,l,h>
 nnoremap <C-J> <C-W><C-J>
