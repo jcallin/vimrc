@@ -101,9 +101,7 @@ abbr _pl #!/usr/bin/perl
 
 
 "Language specific settings
-set tabstop=4
-set expandtab
-set smarttab
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 "Python
 let python_highlight_all=1 "Prettify Python code
