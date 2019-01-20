@@ -7,7 +7,7 @@ set shortmess=atI "Shorter warnings
 set scrolloff=3 "Window has better context when scrolling beyond
 set history=256 "Number of history items remembered
 set timeoutlen=250 "Commands time out at 250ms
-set clipboard=unnamedplus "Use the system clipboard
+set clipboard=unnamed "Use the system clipboard
 set ignorecase "These 2 enable case sense searching when caps are found
 set smartcase
 set showcmd "Show info at bottom about current command
@@ -25,6 +25,8 @@ set undodir=~/.vim/undodir " Enable persistent undo on all edited files
 set undofile
 set visualbell
 set noerrorbells
+"Time between key presses for keymaps with >1 keys
+set timeoutlen=250
 " Add a line below the current line (can't add support for adding above)
 nmap <CR> o<Esc>k
 "Keyboard shortcuts
@@ -33,6 +35,12 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+"Remove a line with -
+map - dd
+"Easy code block navigation
+map [ [{
+map ] ]}
 
 " Allow jk combo to exit insert mode
 inoremap jk <esc>
@@ -46,7 +54,6 @@ nnoremap <C-y> 3<C-y>
 set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
-
 
 "Plugin management uses Vundle
 filetype off
@@ -80,7 +87,6 @@ Plugin 'vim-airline/vim-airline-themes'
 call vundle#end()
 filetype plugin indent on
 
-
 "Plugin Settings
 "let g:pymode_options_max_line_length =
 "Turn off rope in python-mode
@@ -88,20 +94,19 @@ let g:pymode_rope = 0
 "Ignore undefined name errors raised by pyflakes
 let g:pymode_lint_ignore = "E0602"
 
-
 "Visual
 syntax enable "Enable plugins to highlight
 colorscheme badwolf "Set the colorscheme
-
 
 "Abbreviations
 abbr _sh #!/bin/bash
 abbr _py #!/usr/bin/python
 abbr _pl #!/usr/bin/perl
 
-
 "Language specific settings
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=4
+set expandtab
+set smarttab
 
 "Python
 let python_highlight_all=1 "Prettify Python code
