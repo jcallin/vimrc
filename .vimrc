@@ -13,7 +13,6 @@ set smartcase
 set showcmd "Show info at bottom about current command
 set wildmenu "Autocomplete
 set showmatch "Matches parenthesis
-set autoindent "Indents code
 set showmode "Shows current mode at bottom of screen
 set textwidth=0 "Don't wrap text
 set wrap
@@ -85,7 +84,6 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 call vundle#end()
-filetype plugin indent on
 
 "Plugin Settings
 "let g:pymode_options_max_line_length =
@@ -104,9 +102,13 @@ abbr _py #!/usr/bin/python
 abbr _pl #!/usr/bin/perl
 
 "Language specific settings
+filetype plugin indent on
+" Show existing tabs as 4 spaces width
 set tabstop=4
+" When indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
 set expandtab
-set smarttab
 
 "Python
 let python_highlight_all=1 "Prettify Python code
