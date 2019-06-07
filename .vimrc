@@ -1,3 +1,5 @@
+command! Vimrc :vs $MYVIMRC
+
 "General
 set nocompatible "Disable original VI compatibility
 set nu
@@ -34,6 +36,10 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+
+"s behaves like d without clobbering the default register
+nnoremap s "_d
 
 "Remove a line with -
 map - dd
